@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптимізатор закупівлі FPV</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index5.js" defer></script>
+</head>
+<body>
+
+    <h2>1. Параметри товарів</h2>
+<table id="productsTable">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Ціна за од. (дол)</th>
+            <th>Мін. кількість</th>
+            <th>Макс. кількість</th>
+            <th class="actions-cell">Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><input type="text" value="Стек"></td><td><input type="number" class="price" value="59.80"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="3"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Рама"></td><td><input type="number" class="price" value="20.88"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="2"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Пропелери (комплект)"></td><td><input type="number" class="price" value="9.65"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="20"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Мотори"></td><td><input type="number" class="price" value="41.70"></td><td><input type="number" class="min-qty" value="4"></td><td><input type="number" class="max-qty" value="12"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Камера"></td><td><input type="number" class="price" value="30.76"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="3"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Антена"></td><td><input type="number" class="price" value="5.69"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="5"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="Ресівер"></td><td><input type="number" class="price" value="15.17"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="4"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+        <tr><td><input type="text" value="ВТХ (відеопередавач)"></td><td><input type="number" class="price" value="40.73"></td><td><input type="number" class="min-qty" value="1"></td><td><input type="number" class="max-qty" value="3"></td><td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td></tr>
+    </tbody>
+</table>
+
+<div style="margin-bottom: 20px;">
+    <button class="btn btn-primary" onclick="addProductRow()">➕ Додати товар</button>
+</div>
+
+
+    <h2>2. Промокоди</h2>
+<table id="promocodesTable">
+    <thead>
+        <tr>
+            <th>Назва промокоду</th>
+            <th>Знижка (абс. дол)</th>
+            <th>Порогова сума (дол)</th>
+            <th>Авто-відсоток (%)</th>
+            <th class="actions-cell">Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" value="FSUA01"></td>
+            <td><input type="number" class="promo-discount" value="1" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="10" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="FSUA03"></td>
+            <td><input type="number" class="promo-discount" value="3" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="25" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="FSUA05"></td>
+            <td><input type="number" class="promo-discount" value="5" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="45" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+         <tr>
+            <td><input type="text" value="FSUA08"></td>
+            <td><input type="number" class="promo-discount" value="8" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="79" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+         <tr>
+            <td><input type="text" value="FSUA15"></td>
+            <td><input type="number" class="promo-discount" value="15" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="145" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+         <tr>
+            <td><input type="text" value="FSUA25"></td>
+            <td><input type="number" class="promo-discount" value="25" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-threshold" value="229" oninput="calculatePromoPercent(this)"></td>
+            <td><input type="number" class="promo-percent" readonly value=""></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="margin-bottom: 20px;">
+    <button class="btn btn-primary" onclick="addPromoRow()">➕ Додати промокод</button>
+    <button class="btn btn-success" onclick="optimizePurchase()">🚀 Розрахувати оптимальну закупівлю</button>
+</div>
+
+
+    
+
+    <div class="result-box" id="result" style="display:none;">
+        <h2>Результати розрахунку:</h2>
+        <div id="resultContent"></div>
+    </div>
+<!-- Розділ 3. Митний контроль та ліміти людей -->
+<h2>3. Митний контроль та ліміти людей</h2>
+<div style="margin-bottom: 15px; background: #fff; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 4px;">
+    <label for="customsLimit" style="font-weight: bold; margin-right: 10px;">Глобальний митний ліміт ($):</label>
+    <input type="number" id="customsLimit" value="160" style="width: 100px; padding: 6px;" oninput="updateAllFreeLimits()">
+</div>
+
+<table id="peopleTable">
+    <thead>
+        <tr>
+            <th>Ім'я одержувача</th>
+            <th>Вже в дорозі ($)</th>
+            <th>Вільний митний ліміт ($)</th>
+            <th class="actions-cell">Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" value="Іван"></td>
+            <td><input type="number" class="in-transit" value="40" oninput="calculateFreeLimit(this)"></td>
+            <td><input type="number" class="free-limit" readonly value="120.00"></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="Марія"></td>
+            <td><input type="number" class="in-transit" value="0" oninput="calculateFreeLimit(this)"></td>
+            <td><input type="number" class="free-limit" readonly value="160.00"></td>
+            <td class="actions-cell"><button class="btn btn-danger" onclick="deleteRow(this)">❌</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="margin-bottom: 20px;">
+    <button class="btn btn-primary" onclick="addPersonRow()">➕ Додати людину</button>
+</div>
