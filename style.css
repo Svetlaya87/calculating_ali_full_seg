@@ -1,0 +1,59 @@
+html {
+    box-sizing: border-box;
+}
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background-color: #f4f7f6; 
+    color: #333; 
+}
+h1, h2 { color: #2c3e50; }
+table { width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px; 
+    background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+th { background-color: #34495e; color: #fff; }
+input[type="number"], input[type="text"] { width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+input[readonly] { background-color: #e9ecef; }
+button { padding: 10px 20px; background-color: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+button:hover { background-color: #219a52; }
+.result-box { background: #fff; padding: 20px; border-left: 5px solid #2980b9; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.btn { 
+    padding: 10px 20px; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    margin-right: 10px; 
+}
+.btn-success { 
+    background-color: #27ae60; 
+}
+.btn-success:hover { 
+    background-color: #219a52; 
+}
+.btn-primary { 
+    background-color: #2980b9; 
+}
+.btn-primary:hover { 
+    background-color: #1f6391; 
+}
+.btn-danger { 
+    background-color: #e74c3c; 
+    padding: 6px 12px; 
+    font-size: 14px; 
+}
+.btn-danger:hover { 
+    background-color: #c0392b; 
+}
+.actions-cell { 
+    text-align: center; 
+    width: 80px; 
+}
+
+#peopleTable { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+#peopleTable th { background-color: #d35400; color: #fff; } /* Помаранчевий колір для митниці */
+#peopleTable td, #peopleTable th { padding: 10px; border: 1px solid #ddd; text-align: left; }
+
