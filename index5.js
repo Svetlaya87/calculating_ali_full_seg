@@ -58,7 +58,7 @@ function deleteRow(button) {
 }
 
 
-javascript// Додавання нового рядка товару
+// Додавання нового рядка товару
 function addProductRow() {
     const tbody = document.querySelector('#productsTable tbody');
     const newRow = document.createElement('tr');
